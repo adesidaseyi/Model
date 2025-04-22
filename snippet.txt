@@ -1,0 +1,16 @@
+<model-viewer src="strawberry_milk_delivery_spaceship.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+    <button class="Hotspot" slot="hotspot-1" data-position="-222.64276300863673m 56.736653560162m -37.279049796753156m" data-normal="-0.8166658705570201m 0.5771093084107706m 0.001304612197842467m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">wing</div>
+    </button><button class="Hotspot" slot="hotspot-2" data-position="26.573208175014656m 83.71495205535051m -119.12231914037166m" data-normal="-0.6018804431230811m -0.01106906088502403m -0.7985094915385085m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">thrusters</div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>
