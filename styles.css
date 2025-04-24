@@ -167,3 +167,36 @@ model-viewer[ar-status="session-started"] > #ar-prompt {
 model-viewer > #ar-prompt > img {
   animation: circle 4s linear infinite;
 }
+
+.controls {
+position: absolute;
+display: flex;
+flex-direction: column;
+bottom: 40px;
+left: 1rem;
+border-radius: 0.5rem;
+padding: 0.5rem 1rem;
+/* max-height: 14rem; */
+overflow: auto;
+}
+
+.glass {
+background: rgba(255, 255, 255, 0.37);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+backdrop-filter: blur(8px) contrast(0.89) saturate(1.27);
+-webkit-backdrop-filter: blur(8px) contrast(0.89) saturate(1.27);
+border: 1px solid rgba(255, 255, 255, 0.4);
+padding: 0.5rem;
+border-radius: 0.5rem;
+}
+
+button {
+  font-family: 'Rubik', sans-serif;
+  background-color: #fff;
+  border-radius: 0.2rem;
+  border: none;
+  padding: 0.24em 0.5em;
+  box-shadow: 1px 1px 2px #22222227;
+  cursor: pointer;
+  margin: 0.25em !important;
+}

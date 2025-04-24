@@ -15,17 +15,23 @@
         <button data-color="#ff0000">Red</button>
         <button data-color="#00ff00">Green</button>
         <button data-color="#0000ff">Blue</button>
+        <button>None</button>
       </div>      
-      <button class="Hotspot" slot="hotspot-1" data-position="-222.64276300863673m 56.736653560162m -37.279049796753156m" data-normal="-0.8166658705570201m 0.5771093084107706m 0.001304612197842467m" data-visibility-attribute="visible">
+
+      <button class="Hotspot" slot="hotspot-1" data-position="-222.64276300863673m 40m -37.279049796753156m" data-normal="-0.8166658705570201m 0.5771093084107706m 0.001304612197842467m" data-visibility-attribute="visible">
           <div class="HotspotAnnotation">wing</div>
       </button><button class="Hotspot" slot="hotspot-2" data-position="26.573208175014656m 83.71495205535051m -119.12231914037166m" data-normal="-0.6018804431230811m -0.01106906088502403m -0.7985094915385085m" data-visibility-attribute="visible">
           <div class="HotspotAnnotation">thruster</div>
       </button>
+      <button class="Hotspot" slot="hotspot-3" data-position="52.52779491144618m 42.47365177432511m 115.04214014917561m" data-normal="0m -0.15679122399043718m 0.9876317694766509m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">headlight</div>
+      </button>
+      
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
-      <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; ">
-        Activate AR 😎
+      <button slot="ar-button" id="ar-button"> <!-- style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; " -->
+        Activate AR <!-- 😎 -->
       </button>
       <div id="ar-prompt">
           <img src="ar_hand_prompt.png">
