@@ -36,41 +36,43 @@ modelViewer.querySelectorAll('button').forEach((hotspot) => {
 
 
 // TEXTURES
-const textureName = document.querySelector('#texture-name');
-const imageName = document.querySelector('#image-name');
 
 modelViewer.addEventListener("load", () => {
 
   const material = modelViewer.model.materials[0];
 
+  const originalBaseTexture = material.pbrMetallicRoughness['baseColorTexture'].texture;
+
   const createAndApplyTexture = async (channel, event) => {
+    // Clears the texture
     if (event.target.value == "None") {
-      // Clears the texture.
-      material[channel].setTexture(null);
-      // Display the names values
-      textureName.innerText = "None";
-      imageName.innerText = "None";
-    } else if (event.target.value) {
-      // Creates a new texture.
-      const texture = await modelViewer.createTexture(event.target.value);
-      // Set the texture name
-      texture.name = event.target.options[event.target.selectedIndex].text.replace(/ /g, "_").toLowerCase();
-      // Applies the new texture to the specified channel.
+      if (channel.includes('base')) {
+        material.pbrMetallicRoughness[channel].setTexture(originalBaseTexture);
+      }
+      else {
+        material[channel].setTexture(null);
+      }
+    }
+
+    // Creates a new texture.
+    const texture = await modelViewer.createTexture(event.target.value);
+    // Applies the new texture to the specified channel.
+    if (channel.includes('base') || channel.includes('metallic')) {
+      material.pbrMetallicRoughness[channel].setTexture(texture);
+    }
+    else {
       material[channel].setTexture(texture);
-      // Display the names values
-      textureName.innerText = texture.name;
-      imageName.innerText = texture.source.name;
     }
   }
 
+  // Normals
   document.querySelector('#normals2').addEventListener('input', (event) => {
-    createAndApplyTexture('normalTexture', event);
-  });
-});
+      createAndApplyTexture('normalTexture', event);
+    });
 
-/*
-document.querySelector('#texture-panel').addEventListener('click', async (event) => {
-const testMaterial = modelViewer.model.materials[0]; // Or use .find(m => m.name === 'YourMaterialName')
-const testTexture = await modelViewer.createTexture('New-MTN-Logo.jpg');
-testMaterial.pbrMetallicRoughness.setBaseColorTexture(testTexture);
-});*/
+  // Diffuse
+  document.querySelector('#diffuse').addEventListener('input', (event) => {
+      createAndApplyTexture('baseColorTexture', event);
+  });
+
+});
