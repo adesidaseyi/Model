@@ -10,21 +10,42 @@
   
   <body>
     <!-- <model-viewer> HTML element -->
-    <model-viewer id="color" src="strawberry_milk_delivery_spaceship.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+    <model-viewer id="color" src="strawberry_milk_delivery_spaceship.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" camera-orbit="0deg 90deg 800m" camera-target="0m 70m 20m" field-of-view="45deg" min-field-of-view="25deg" max-field-of-view="45deg" interpolation-decay="200" min-camera-orbit="auto auto 5%">
       <div class="controls glass" id="color-controls">
-        <button data-color="#ff0000">Red</button>
-        <button data-color="#00ff00">Green</button>
-        <button data-color="#0000ff">Blue</button>
-        <button>None</button>
+        <button id="color-controls-button" data-color="#ff0000">Red</button>
+        <button id="color-controls-button" data-color="#00ff00">Green</button>
+        <button id="color-controls-button" data-color="#0000ff">Blue</button>
+        <button id="color-controls-button" >None</button>
       </div>      
 
-      <button class="Hotspot" slot="hotspot-1" data-position="-222.64276300863673m 40m -37.279049796753156m" data-normal="-0.8166658705570201m 0.5771093084107706m 0.001304612197842467m" data-visibility-attribute="visible">
-          <div class="HotspotAnnotation">wing</div>
-      </button><button class="Hotspot" slot="hotspot-2" data-position="26.573208175014656m 83.71495205535051m -119.12231914037166m" data-normal="-0.6018804431230811m -0.01106906088502403m -0.7985094915385085m" data-visibility-attribute="visible">
-          <div class="HotspotAnnotation">thruster</div>
+      <div class="controls glass" id="texture-panel">
+        <p>Normals</p>
+        <select id="normals2">
+          <option>None</option>
+          <option value="filthy-space-panels_normal-ogl.png">
+            Filthy Space Panel</option>
+          <option value="alien-metal_normal-ogl.png">
+            Alien Metal</option>
+          <option value="vertical-lined-metal_normal-ogl.png">
+            Vertical Lined Metal</option>
+        </select>
+        <p>Custom texture name</p>
+        <p id="texture-name">None</p>
+        <p>Image name from file name</p>
+        <p id="image-name">None</p>
+      </div>
+
+      <button id="color-controls-button">
+        Rescale
       </button>
-      <button class="Hotspot" slot="hotspot-3" data-position="52.52779491144618m 42.47365177432511m 115.04214014917561m" data-normal="0m -0.15679122399043718m 0.9876317694766509m" data-visibility-attribute="visible">
-        <div class="HotspotAnnotation">headlight</div>
+      <button class="view-button" slot="hotspot-1" data-position="-222.64276300863673m 40m -37.279049796753156m" data-visibility-attribute="visible" data-normal="0m 1m 0m" data-orbit="0deg 60deg 200m" data-target="-222.64276300863673m 40m -37.279049796753156m">
+          wing
+      </button>
+      <button class="view-button" slot="hotspot-2" data-position="26.573208175014656m 83.71495205535051m -119.12231914037166m" data-orbit="180deg 90deg 200m" data-normal="-0.6018804431230811m -0.01106906088502403m -0.79850949m" data-visibility-attribute="visible" data-target="26.573208175014656m 83.71495205535051m -119.12231914037166m">
+          thruster
+      </button>
+      <button class="view-button" slot="hotspot-3" data-position="52.52779491144618m 42.47365177432511m 115.04214014917561m" data-normal="0m -0.15679122399043718m 0.9876317694766509m" data-orbit="0deg 60deg 200m" data-visibility-attribute="visible" data-target="52.52779491144618m 42.47365177432511m 115.04214014917561m">
+        headlight
       </button>
       
       <div class="progress-bar hide" slot="progress-bar">
@@ -36,6 +57,8 @@
       <div id="ar-prompt">
           <img src="ar_hand_prompt.png">
       </div>
+      <!-- div id="camera-view" -->
+      <!-- /div -->
     </model-viewer>  
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
